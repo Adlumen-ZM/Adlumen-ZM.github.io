@@ -1,0 +1,271 @@
+// 设计系统 - 融合Notion和Claude风格
+
+// 颜色变量
+:root {
+  // 主要颜色
+  --bg-primary: #f6f5f4; // Notion温暖白色
+  --bg-secondary: #f5f4ed; // Claude羊皮纸色
+  --bg-surface: #ffffff; // 纯白表面
+  --text-primary: rgba(0,0,0,0.95); // Notion近黑色
+  --text-secondary: #615d59; // Notion温暖灰色
+  --text-tertiary: #87867f; // Claude石灰色
+  
+  // 强调色
+  --color-accent: #0075de; // Notion蓝
+  --color-accent-secondary: #c96442; // Claude赤土色
+  --color-accent-hover: #005bab; // Notion蓝深色
+  --color-accent-secondary-hover: #d97757; // Claude珊瑚色
+  
+  // 中性色
+  --warm-gray-500: #615d59;
+  --warm-gray-300: #a39e98;
+  --warm-gray-100: #f0eee6;
+  
+  // 半径系统 (Notion风格)
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  
+  // 阴影系统 (Notion风格)
+  --shadow-card: rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px;
+  --shadow-elevated: rgba(0,0,0,0.01) 0px 1px 3px, rgba(0,0,0,0.02) 0px 3px 7px, rgba(0,0,0,0.02) 0px 7px 15px, rgba(0,0,0,0.04) 0px 14px 28px, rgba(0,0,0,0.05) 0px 23px 52px;
+  
+  // 边框
+  --border-default: 1px solid rgba(0,0,0,0.1); // Notion whisper border
+  
+  // 间距单位
+  --space-unit: 8px;
+  
+  // 字体
+  --font-display: 'Georgia', serif; // Claude风格标题
+  --font-body: 'Inter', -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif; // Notion风格正文
+  --font-code: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  
+  // 动画
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.35s ease;
+}
+
+// 深色模式
+html[data-theme="dark"] {
+  --bg-primary: #31302e; // Notion温暖深色
+  --bg-secondary: #3d3d3a; // Claude深色
+  --bg-surface: #31302e;
+  --text-primary: #f6f5f4;
+  --text-secondary: #a39e98;
+  --text-tertiary: #b0aea5; // Claude暖银色
+  
+  --color-accent: #2698ba; // 青蓝色
+  --color-accent-secondary: #d97757; // Claude珊瑚色
+  --color-accent-hover: #2a9d99;
+  --color-accent-secondary-hover: #c96442;
+  
+  --warm-gray-500: #a39e98;
+  --warm-gray-300: #615d59;
+  --warm-gray-100: #3d3d3a;
+  
+  --border-default: 1px solid rgba(255,255,255,0.1);
+  
+  --shadow-card: rgba(0,0,0,0.1) 0px 4px 18px, rgba(0,0,0,0.08) 0px 2px 8px;
+  --shadow-elevated: rgba(0,0,0,0.15) 0px 8px 32px, rgba(0,0,0,0.1) 0px 4px 16px;
+}
+
+// 全局重置和基础样式
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+// 标题样式
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: calc(var(--space-unit) * 2);
+}
+
+h1 {
+  font-size: 3.00rem;
+  letter-spacing: -1.5px;
+}
+
+h2 {
+  font-size: 2.50rem;
+  letter-spacing: -1.25px;
+}
+
+h3 {
+  font-size: 2.00rem;
+  letter-spacing: -0.75px;
+}
+
+h4 {
+  font-size: 1.50rem;
+  letter-spacing: -0.5px;
+}
+
+h5 {
+  font-size: 1.25rem;
+  letter-spacing: -0.25px;
+}
+
+h6 {
+  font-size: 1.00rem;
+  letter-spacing: 0;
+}
+
+// 段落和文本
+p {
+  margin-bottom: calc(var(--space-unit) * 2);
+}
+
+// 链接
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+}
+
+// 按钮样式
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--space-unit)) calc(var(--space-unit) * 2);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.33;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &.btn-primary {
+    background-color: var(--color-accent);
+    color: white;
+    
+    &:hover {
+      background-color: var(--color-accent-hover);
+      color: white;
+      text-decoration: none;
+    }
+  }
+  
+  &.btn-secondary {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--text-primary);
+    
+    &:hover {
+      background-color: rgba(0,0,0,0.1);
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+  }
+  
+  &.btn-outline {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    
+    &:hover {
+      background-color: rgba(0,0,0,0.05);
+      text-decoration: none;
+    }
+  }
+  
+  &.btn-pill {
+    border-radius: var(--radius-pill);
+  }
+}
+
+// 卡片样式
+.card {
+  background-color: var(--bg-surface);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: calc(var(--space-unit) * 3);
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-2px);
+  }
+}
+
+// 容器样式
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space-unit) * 3);
+}
+
+// 响应式断点
+@media (max-width: 768px) {
+  .container {
+    padding: 0 calc(var(--space-unit) * 2);
+  }
+  
+  h1 {
+    font-size: 2.50rem;
+  }
+  
+  h2 {
+    font-size: 2.00rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 calc(var(--space-unit) * 1.5);
+  }
+  
+  h1 {
+    font-size: 2.00rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.50rem;
+  }
+}

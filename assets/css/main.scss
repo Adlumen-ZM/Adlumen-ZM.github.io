@@ -8,6 +8,8 @@ $max-content-width: {{ site.max_width }};
 
 @import
   "variables",
+  "design-system",
+  "animations",
   "themes",
   "layout",
   "base",

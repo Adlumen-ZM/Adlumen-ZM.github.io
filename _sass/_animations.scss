@@ -1,0 +1,614 @@
+// 动画和交互效果
+
+// 淡入动画
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 淡入延迟动画
+@keyframes fadeInDelay {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 缩放动画
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// 脉冲动画
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// 滑动动画
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// 旋转动画
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// 动画类
+.animate-fade-in {
+  animation: fadeIn var(--transition-slow) ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeInDelay var(--transition-slow) ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--transition-normal) ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slideIn var(--transition-normal) ease-out forwards;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+// 滚动动画
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--transition-slow);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// 平滑滚动
+html {
+  scroll-behavior: smooth;
+}
+
+// 按钮悬停效果
+.btn {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// 卡片悬停效果
+.card {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+// 链接悬停效果
+a {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// 导航栏滚动效果
+#navbar {
+  transition: all var(--transition-normal);
+  
+  &.scrolled {
+    box-shadow: var(--shadow-elevated);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+// 图片悬停效果
+img {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// 输入框焦点效果
+input, textarea {
+  transition: all var(--transition-fast);
+  
+  &:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent), 0.1);
+  }
+}
+
+// 加载动画
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--warm-gray-300);
+  border-radius: 50%;
+  border-top-color: var(--color-accent);
+  animation: spin 0.8s ease-in-out infinite;
+}
+
+// 响应式调整
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+// 滚动进度条
+#progress {
+  transition: width 0.1s ease;
+}
+
+// 深色模式切换动画
+html {
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+// 模态框动画
+.modal {
+  transition: opacity var(--transition-normal);
+  
+  &.show {
+    opacity: 1;
+  }
+  
+  .modal-content {
+    animation: scaleIn var(--transition-normal) ease-out;
+  }
+}
+
+// 下拉菜单动画
+.dropdown-menu {
+  animation: fadeIn var(--transition-fast) ease-out;
+}
+
+// 工具提示动画
+.tooltip {
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  
+  &.show {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+// 标签页动画
+.nav-tabs .nav-link {
+  transition: all var(--transition-fast);
+}
+
+// 折叠动画
+.collapse {
+  transition: height var(--transition-normal) ease;
+}
+
+// 警报动画
+.alert {
+  animation: slideIn var(--transition-normal) ease-out;
+}
+
+// 徽章动画
+.badge {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// 进度条动画
+.progress-bar {
+  transition: width var(--transition-slow) ease;
+}
+
+// 分页动画
+.pagination .page-link {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// 面包屑导航动画
+.breadcrumb-item {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// 列表组动画
+.list-group-item {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateX(5px);
+  }
+}
+
+// 卡片组动画
+.card-group .card {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    z-index: 1;
+  }
+}
+
+// 媒体对象动画
+.media {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: translateX(10px);
+  }
+}
+
+// 轮播动画
+.carousel {
+  transition: all var(--transition-normal);
+}
+
+// 折叠面板动画
+.accordion {
+  transition: all var(--transition-normal);
+  
+  .card {
+    transition: all var(--transition-normal);
+  }
+}
+
+// 表格动画
+table {
+  transition: all var(--transition-normal);
+  
+  tbody tr {
+    transition: all var(--transition-fast);
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+  }
+}
+
+// 表单动画
+.form-control {
+  transition: all var(--transition-fast);
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(var(--color-accent), 0.1);
+  }
+}
+
+// 按钮组动画
+.btn-group .btn {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    z-index: 1;
+  }
+}
+
+// 标签动画
+.label {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// 徽章动画
+.tag {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// 导航项动画
+.nav-item {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// 下拉菜单项动画
+.dropdown-item {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateX(5px);
+  }
+}
+
+// 分页项动画
+.page-item {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// 面包屑项动画
+.breadcrumb-item {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// 列表项动画
+.list-item {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateX(5px);
+  }
+}
+
+// 卡片项动画
+.card-item {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// 媒体项动画
+.media-item {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: translateX(10px);
+  }
+}
+
+// 轮播项动画
+.carousel-item {
+  transition: all var(--transition-normal);
+}
+
+// 折叠面板项动画
+.accordion-item {
+  transition: all var(--transition-normal);
+}
+
+// 表格行动画
+table tr {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+}
+
+// 表单元素动画
+.form-element {
+  transition: all var(--transition-fast);
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(var(--color-accent), 0.1);
+  }
+}
+
+// 按钮元素动画
+.button-element {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// 链接元素动画
+.link-element {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// 图片元素动画
+.image-element {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// 文本元素动画
+.text-element {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// 容器元素动画
+.container-element {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// 元素淡入动画
+.fade-in {
+  animation: fadeIn var(--transition-slow) ease-out forwards;
+}
+
+// 元素滑入动画
+.slide-in {
+  animation: slideIn var(--transition-normal) ease-out forwards;
+}
+
+// 元素缩放入动画
+.scale-in {
+  animation: scaleIn var(--transition-normal) ease-out forwards;
+}
+
+// 元素脉冲动画
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+// 元素旋转动画
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+// 元素悬停效果
+.hover-effect {
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+// 元素焦点效果
+.focus-effect {
+  transition: all var(--transition-fast);
+  
+  &:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent), 0.1);
+  }
+}
+
+// 元素点击效果
+.click-effect {
+  transition: all var(--transition-fast);
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// 元素滚动效果
+.scroll-effect {
+  transition: all var(--transition-slow);
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 元素加载效果
+.loading-effect {
+  animation: spin 0.8s ease-in-out infinite;
+}
+
+// 元素过渡效果
+.transition-effect {
+  transition: all var(--transition-normal);
+}
+
+// 元素平滑效果
+.smooth-effect {
+  transition: all var(--transition-slow);
+}
+
+// 元素快速效果
+.fast-effect {
+  transition: all var(--transition-fast);
+}
+
+// 元素延迟效果
+.delay-effect {
+  animation-delay: 0.1s;
+}
+
+// 元素长延迟效果
+.long-delay-effect {
+  animation-delay: 0.3s;
+}
+
+// 元素超长延迟效果
+.extra-long-delay-effect {
+  animation-delay: 0.5s;
+}
